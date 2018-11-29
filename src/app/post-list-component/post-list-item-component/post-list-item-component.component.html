@@ -1,0 +1,30 @@
+<li [ngClass]="{'list-group-item': true,
+'list-group-item-success': PostItem.loveIts > 0,
+'list-group-item-danger': PostItem.loveIts < 0}">
+  <div [ngStyle]="{color: getColor()} ">
+    <div class="row">
+      <div class="col-md-8">
+        <h2>
+          {{ PostItem.title }}
+        </h2>
+      </div>
+      <div class="col-md-4">
+        <div class="float-right">
+          <p class="date">{{ PostItem.createdAt | date: 'dd/MM/yyyy, h:mm a'}}</p>
+        </div>
+
+      </div>
+
+    </div>
+
+    <p>
+      {{ PostItem.content }}
+    </p>
+
+  </div>
+  <!-- intégration d'un bouton "supprimer post" -->
+  <button (click)="onDeletePost(PostItem)" class="btn btn-danger pull-right">Supprimer post</button>
+  <button (click)="love()" class="btn btn-success"> Love it! <span> {{ countlike }} </span></button>
+  <button (click)="dlove()" class="btn btn-danger"> Don't love it! <span> {{ countdislike }}</span></button>
+
+</li>
